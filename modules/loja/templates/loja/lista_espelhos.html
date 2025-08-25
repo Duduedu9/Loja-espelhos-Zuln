@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZULN - Espelhos</title>
+    <link rel="stylesheet" href="{% static 'loja/style.css' %}">
+</head>
+<body>
+<!-- HEADER -->
+<header>
+    <div class="logo">
+        <img src="{% static 'loja/logo.png' %}" alt="ZULN">
+    </div>
+    <nav>
+        <a href="{% url 'loja:lista' %}">Início</a>
+        <a href="#">Sobre</a>
+        <a href="#">Contato</a>
+    </nav>
+</header>
+
+
+<section class="hero">
+    <h1>ZULN  |  Espelhos Únicos para o Seu Estilo</h1>
+    <p>Somos especialistas em espelhos sob medida, que transformam ambientes e refletem o seu bom gosto.</p>
+    
+    <div class="hero-contato">
+        <p>
+            <i class="fas fa-map-marker-alt"></i> 
+            Feira de Santana, Bahia
+        </p>
+        <p>
+            <a href="tel:+5575999999999">
+                <i class="fas fa-phone"></i> 
+                (75) 9 9257-9617
+            </a>
+        </p>
+        <p>
+            <a href="https://instagram.com/zuln.espelhos" target="_blank">
+                <i class="fab fa-instagram"></i> 
+                @zuln.espelhos
+            </a>
+        </p>
+    </div>
+</section>
+
+    <!-- LISTA DE ESPELHOS -->
+    <main class="lista-container">
+        <h2>Nossos Espelhos</h2>
+        <div class="grid-espelhos">
+            {% for espelho in espelhos %}
+                <div class="card-espelho">
+                    {% if espelho.fotos.first %}
+                        <img src="{{ espelho.fotos.first.imagem.url }}" alt="{{ espelho.nome }}">
+                    {% else %}
+                        <img src="{% static 'loja/placeholder.png' %}" alt="{{ espelho.nome }}">
+                    {% endif %}
+                    <h3>{{ espelho.nome }}</h3>
+                    <p>R$ {{ espelho.preco }}</p>
+                    <a href="{% url 'loja:detalhe' espelho.pk %}" class="btn-detalhe">Ver Detalhes</a>
+                </div>
+            {% empty %}
+                <p>Nenhum espelho disponível no momento.</p>
+            {% endfor %}
+        </div>
+    </main>
+
+<section class="vantagens-container">
+    <h2>Nossos Diferenciais</h2>
+    <div class="vantagens-grid">
+        <div class="vantagem-item">
+            <i class="fas fa-hand-holding-heart"></i>
+            <h3>Feito à Mão</h3>
+            <p>Cada espelho é produzido artesanalmente, com atenção a cada detalhe.</p>
+        </div>
+        <div class="vantagem-item">
+            <i class="fas fa-magic"></i>
+            <h3>Design Personalizado</h3>
+            <p>Criamos projetos exclusivos que se encaixam perfeitamente na sua visão.</p>
+        </div>
+        <div class="vantagem-item">
+            <i class="fas fa-glass-cheers"></i>
+            <h3>Qualidade Premium</h3>
+            <p>Utilizamos apenas os melhores materiais para garantir a durabilidade e o brilho.</p>
+        </div>
+    </div>
+</section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 ZULN - Todos os direitos reservados</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ espelho.nome }} - ZULN</title>
+    <link rel="stylesheet" href="{% static 'loja/style.css' %}">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <img src="{% static 'loja/logo.png' %}" alt="ZULN">
+        </div>
+        <nav>
+            <a href="{% url 'loja:lista' %}">Início</a>
+            <a href="#">Sobre</a>
+            <a href="#">Contato</a>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+        <div class="detalhe-container">
+            <!-- Galeria à esquerda -->
+            <div class="galeria-container">
+                <div class="galeria-espelho" id="galeriaEspelho">
+                    {% for foto in espelho.fotos.all %}
+                        <img class="galeria-foto" src="{{ foto.imagem.url }}" alt="Foto de {{ espelho.nome }}">
+                    {% endfor %}
+                </div>
+                <button class="galeria-btn prev-btn">&lt;</button>
+                <button class="galeria-btn next-btn">&gt;</button>
+            </div>
+
+            <!-- Informações à direita -->
+            <div class="info-espelho">
+                <h2>{{ espelho.nome }}</h2>
+                <p class="descricao">{{ espelho.descricao }}</p>
+                <p class="medidas">Dimensões: {{ espelho.largura }}cm x {{ espelho.altura }}cm</p>
+                <p class="preco">R$ {{ espelho.preco }}</p>
+                
+                {% with texto_msg=espelho.nome|urlencode %}
+                    <a href="https://wa.me/SEU_NUMERO_COM_DDD?text=Olá! Gostaria de saber mais sobre o espelho {{ texto_msg }}. Vi no site: {{ request.build_absolute_uri|urlencode }}" target="_blank" class="btn-whatsapp">
+                        Fazer Pedido por WhatsApp
+                    </a>
+                {% endwith %}
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 ZULN - Todos os direitos reservados</p>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script src="{% static 'loja/js/galeria.js' %}"></script>
+</body>
+</html>

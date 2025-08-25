@@ -1,0 +1,12 @@
+# Ignora arquivos de ambiente virtual
+venv/
+.env
+
+# Ignora arquivos gerados pelo Django
+__pycache__/
+*.pyc
+db.sqlite3
+.DS_Store
+
+# Ignora a pasta de mídia (uploads de usuários)
+/media/
