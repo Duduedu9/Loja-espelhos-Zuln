@@ -3,9 +3,6 @@
 from django.db import models
 
 class Espelho(models.Model):
-    """
-    Modelo para representar um espelho na loja.
-    """
     nome = models.CharField(max_length=200, verbose_name="Nome ou Modelo")
     descricao = models.TextField(blank=True, verbose_name="Descrição Detalhada")
     largura = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Largura (cm)")
@@ -13,7 +10,6 @@ class Espelho(models.Model):
     preco = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Preço")
 
     def __str__(self):
-        """Retorna uma representação em string do objeto."""
         return self.nome
 
     class Meta:
@@ -22,9 +18,6 @@ class Espelho(models.Model):
         ordering = ['nome']
 
 class FotoEspelho(models.Model):
-    """
-    Modelo para armazenar as fotos de cada espelho.
-    """
     espelho = models.ForeignKey(
         Espelho,
         on_delete=models.CASCADE,
@@ -41,7 +34,6 @@ class FotoEspelho(models.Model):
     )
 
     def __str__(self):
-        """Retorna uma representação em string da foto."""
         return f"Foto de {self.espelho.nome} (Ordem: {self.ordem})"
 
     class Meta:

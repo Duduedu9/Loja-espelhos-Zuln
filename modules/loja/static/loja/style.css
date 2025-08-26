@@ -7,35 +7,75 @@
 
 body {
   font-family: "Segoe UI", sans-serif;
-  background-color: #0d2c2c; /* Verde petróleo */
-  color: #f5f5f2; /* Branco gelo */
+  background-color: #0d2c2c; 
+  color: #f5f5f2; 
   line-height: 1.6;
 }
 
 /* ================= HEADER ================= */
 header {
   background-color: #ffffff;
-  padding: 0.8rem 2rem;
+  padding: 0.6rem 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
   align-items: center;
-  
-  border-radius: 50px; /* borda arredondada */
+  flex-wrap: wrap; 
+
+  border-radius: 50px;
   margin: 1rem auto;
   width: 90%;
   max-width: 1200px;
-
-  /* sombra suave estilo cartão */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 
   
-  top: 10px; /* dá um espacinho do topo */
+  top: 10px;
   z-index: 1000;
+}
+
+
+@media (min-width: 768px) {
+  header {
+    justify-content: flex-start; 
+    gap: 45rem;
+  }
 }
 
 /* Logo */
 .logo img {
-  height: 80px;
+  height: 90px;
+  transition: transform 0.4s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+/* Links da navbar */
+nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    transition: all 0.3s ease;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    position: relative;
+}
+
+/* Efeito hover moderno */
+nav a:hover {
+    background-color: #f0f0f0;
+    color: #c9a86a;
+}
+/* Logo */
+.logo img {
+  height: 200px;
   transition: transform 0.3s ease;
 }
 
@@ -46,14 +86,14 @@ header {
 /* Links da navbar */
 
 nav a {
-  margin-left: 1.5rem;
+  margin-left: 1.0rem;
   text-decoration: none;
   font-weight: 600;   /* deixa mais "forte" */
   font-size: 1.1rem;  /* 👈 aumenta o tamanho da fonte */
   color: #333;
   transition: all 0.3s ease;
-  padding: 0.6rem 1.2rem;
-  border-radius: 25px;
+  padding: 0.6rem 1.0rem;
+  border-radius: 20px;
 }
 
 
@@ -152,20 +192,19 @@ nav a:hover::after {
 
 .lista-container h2 {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: #1a4d4f;
+  color: #f5f5f2;
 }
 
 /* Grid para os espelhos */
 .grid-espelhos {
   display: grid;
-  /* Por padrão, em telas pequenas, pode ter quantas colunas couberem */
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 2.5rem;
 }
 
-/* Em telas maiores (por exemplo, 992px), redefine para no máximo 3 colunas */
+
 @media (min-width: 992px) {
   .grid-espelhos {
     grid-template-columns: repeat(3, 1fr);
@@ -187,9 +226,12 @@ nav a:hover::after {
 }
 
 .card-espelho img {
-  width: 80%;       /* largura do card */
-  height: 300px;     /* altura maior para a imagem */
-  object-fit: cover;  /* mantém proporção e corta partes que excedem */
+  width: 80%;       
+  height: 300px;    
+  object-fit: cover;  
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  margin-top: 20px;
 }
 
 .card-espelho h3 {
@@ -209,7 +251,7 @@ nav a:hover::after {
   display: inline-block;
   margin-bottom: 1rem;
   padding: 0.5rem 1rem;
-  background-color: #25d366;
+  background-color: #1a4d4f;
   color: #fff;
   font-weight: bold;
   border-radius: 8px;
@@ -225,14 +267,14 @@ nav a:hover::after {
 /* ================= DETALHE ================= */
 .detalhe-container {
   display: flex;
-  flex-direction: row; /* lado a lado por padrão */
+  flex-direction: row; 
   gap: 2rem;
   padding: 3rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Responsividade: no celular empilha */
+/* Responsividade: no celular  */
 @media (max-width: 768px) {
   .detalhe-container {
     flex-direction: column;
@@ -247,7 +289,7 @@ nav a:hover::after {
 
 /* Galeria de imagens (lado esquerdo) */
 .galeria-container {
-  flex: 0 0 30%; /* 60% da largura */
+  flex: 0 0 30%; 
   max-width: 700px;
   position: relative;
   overflow: hidden;
@@ -291,9 +333,9 @@ nav a:hover::after {
 
 /* Informações do espelho (lado direito) */
 .info-espelho {
-  flex: 0 0 40%; /* 40% da largura */
+  flex: 0 0 40%;
   max-width: 500px;
-  align-self: flex-start; /* Alinha ao topo da galeria */
+  align-self: flex-start; 
 }
 
 .info-espelho h2 {
@@ -335,10 +377,10 @@ nav a:hover::after {
 }
 
 footer {
-  text-align: center;      /* centraliza o texto horizontalmente */
-  padding: 2rem 0;         /* espaço em cima e embaixo */
-  background-color: #111;  /* opcional, para destacar */
-  color: #fff;             /* cor do texto */
+  text-align: center;      
+  padding: 2rem 0;         
+  background-color: #111;  
+  color: #fff;             
 }
 
 
@@ -346,7 +388,7 @@ footer {
 .vantagens-container {
     padding: 3rem 2rem;
     text-align: center;
-    background-color: #1a4d4f; /* Cor de fundo que você já tem na navbar antiga */
+    background-color: #1a4d4f; 
 }
 
 .vantagens-container h2 {
