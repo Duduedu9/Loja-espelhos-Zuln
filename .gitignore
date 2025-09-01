@@ -10,3 +10,6 @@ db.sqlite3
 
 # Ignora a pasta de mídia (uploads de usuários)
 /media/
+
+# Ignora o arquivo de backup do banco de dados
+data.json
